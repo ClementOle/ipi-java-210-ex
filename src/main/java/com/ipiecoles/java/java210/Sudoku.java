@@ -4,9 +4,6 @@ public class Sudoku {
 	public static final String FIN_SAISIE = "FIN";
 	public boolean resolu = false;
 	public short[][] sudokuAResoudre;
-	/**
-	 * Constructeur par défaut
-	 */
 
 	public short[][] getSudokuAResoudre() {
 		return sudokuAResoudre;
@@ -16,11 +13,21 @@ public class Sudoku {
 		sudokuAResoudre = tab;
 	}
 
+	/**
+	 * Constructeur par défaut
+	 */
+
 	public Sudoku() {
 		sudokuAResoudre = new short[9][9];
+		//setSudokuAResoudre(new short[9][9]);
 	}
 	public static boolean ligneSaisieEstCoherente(String ligneSaisie) {
-		return (ligneSaisie == null || ligneSaisie == " ");
+		if (ligneSaisie != null && ligneSaisie != " " && ligneSaisie != "   ") {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	/**
