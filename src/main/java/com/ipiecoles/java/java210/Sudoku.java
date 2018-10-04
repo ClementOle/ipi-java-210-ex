@@ -1,17 +1,28 @@
 package com.ipiecoles.java.java210;
 
 public class Sudoku {
-
+	public static final String FIN_SAISIE = "FIN";
+	public boolean resolu = false;
+	public short[][] sudokuAResoudre;
 	/**
 	 * Constructeur par défaut
 	 */
-	public Sudoku() {
+
+	public short[][] getSudokuAResoudre() {
+		return sudokuAResoudre;
 	}
 
-	public static boolean ligneSaisieEstCoherente(String ligneSaisie) {
-		return true;
+	public void setSudokuAResoudre(short[][] tab){
+		sudokuAResoudre = tab;
 	}
-	
+
+	public Sudoku() {
+		sudokuAResoudre = new short[9][9];
+	}
+	public static boolean ligneSaisieEstCoherente(String ligneSaisie) {
+		return (ligneSaisie == null || ligneSaisie == " ");
+	}
+
 	/**
 	 * Cette méthode invite l'utilisateur à saisir un ensemble de coordonnées pour initialiser un sudoku à résoudre.
 	 * Les coordonnées prennent la forme XYZ avec X correspondant à l'abscisse, Y l'ordonnée et Z la valeur. Seules les
