@@ -1,5 +1,7 @@
 package com.ipiecoles.java.java210;
 
+import java.util.Scanner;
+
 public class Sudoku {
 	public static final String FIN_SAISIE = "FIN";
 	public boolean resolu = false;
@@ -22,11 +24,21 @@ public class Sudoku {
 		//setSudokuAResoudre(new short[9][9]);
 	}
 	public static boolean ligneSaisieEstCoherente(String ligneSaisie) {
-		if (ligneSaisie != null && ligneSaisie != " " && ligneSaisie != "   ") {
-			return true;
+
+		if (ligneSaisie == null || ligneSaisie.trim().equals("")) {
+			System.out.println("Les coordonnées du chiffre et/ou sa valeur ne peuvent pas être nulles, vides ou remplies avec des espaces");
+			return false;
+		}
+		else if (ligneSaisie.length() != 3){
+			System.out.println("Les coordonnées du chiffre et/ou sa valeur doit faire 3 caractères");
+			return false;
+		}
+		else if (!ligneSaisie.matches("[0-8][0-8][1-9]")) {
+			System.out.println("L'abscisse et l'ordonnée doivent être compris entre 0 et 8, la valeur entre 1 et 9");
+			return false;
 		}
 		else {
-			return false;
+			return true;
 		}
 	}
 
@@ -44,7 +56,24 @@ public class Sudoku {
 	 * @return Un tableau comportant les coordonnées des chiffres présents dans le sudoku à résoudre
 	 */
 	public static String[] demandeCoordonneesSudoku() {
-		return null;
+		String[] valeur = new String[81];
+		String ligneSaisie	;
+		Scanner scanner = new Scanner(System.in);
+		int i = 0;
+		System.out.println("Entrer valeur suivie d'un retour à la ligne. Une fois terminé entrez FIN");
+		ligneSaisie = scanner.nextLine();
+		while(!ligneSaisie.equals("FIN")) {
+			if (ligneSaisieEstCoherente(ligneSaisie)) {
+				valeur[i] = ligneSaisie;
+				i++;
+			}
+			else {
+				System.out.println("Valeur incorect veuillez recommencer !");
+			}
+			ligneSaisie = scanner.nextLine();
+		}
+		scanner.close();
+		return valeur;
 	}
 	
 	/**
@@ -58,6 +87,17 @@ public class Sudoku {
 	 * @param tableauCoordonnees
 	 */
 	public void remplitSudokuATrous(String[] tableauCoordonnees) {
+		int i = 0;
+		int x, y, z;
+		while(i<tableauCoordonnees.length){
+			x = stringToInt(tableauCoordonnees[i].substring(0,1));
+			y = stringToInt(tableauCoordonnees[i].substring(1,2));
+			z = stringToInt(tableauCoordonnees[i].substring(2,3));
+			//sudokuAResoudre[x][y]= z;
+
+
+			i++;
+		}
 		
     }
 	

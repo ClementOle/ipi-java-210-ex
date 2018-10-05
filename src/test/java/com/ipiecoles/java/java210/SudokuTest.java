@@ -410,7 +410,7 @@ public class SudokuTest {
 	    System.setOut(new PrintStream(outContent));
 	    resultat = Sudoku.ligneSaisieEstCoherente(valeur);
 		Assertions.assertThat(resultat).as("La vérification de la valeur " + valeur + " devrait renvoyer : " + ok).isEqualTo(ok);
-		Assertions.assertThat(outContent.toString()).as("Le message affiché devrait être : " + message).isEqualTo(message);
+		Assertions.assertThat(outContent.toString()).as("Le message affiché devrait être : " + message).isEqualToNormalizingNewlines(message);
 	}
 	
 	private void invokeSetter(Object obj, String variableName, Object variableValue){
